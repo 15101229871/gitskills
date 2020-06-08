@@ -10,8 +10,11 @@ def color_transfer(source, target):
     # 从RGB空间转换到LAB空间中
     source = cv2.cvtColor(source, cv2.COLOR_BGR2LAB).astype("float32")
     target = cv2.cvtColor(target, cv2.COLOR_BGR2LAB).astype("float32")
+    #cvtColor函数是OpenCV里用于图像颜色空间转换，可以实现RGB颜色、HSV颜色、HSI颜色、lab颜色、YUV颜色等转换，也可以彩色和灰度图互转。
 
     # 计算source和target图像的统计信息，即均值和方差等
+    # Lab颜色模型由三个要素组成，一个要素是亮度（L），a 和b是两个颜色通道。a包括的颜色是从深绿色（低亮度值）到灰色（中亮度值）再到亮粉红色（高亮度值）；
+    # b是从亮蓝色（低亮度值）到灰色（中亮度值）再到黄色（高亮度值）。
     (lMeanSrc, lStdSrc, aMeanSrc, aStdSrc, bMeanSrc, bStdSrc) = image_stats(source)
     (lMeanTar, lStdTar, aMeanTar, aStdTar, bMeanTar, bStdTar) = image_stats(target)
 
